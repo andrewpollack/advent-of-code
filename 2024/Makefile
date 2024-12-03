@@ -13,7 +13,3 @@ run:
 	fi; \
 	echo "Running $$day_file..."; \
 	go run $$day_file
-
-solve-01:
-	cat data/day01.txt  | awk '{print $1}' | sort
-	cat data/day01.txt  | awk '{print $2}' | sort
