@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func checkFanout(i int, j int, xTrajectory int, yTrajectory int, targetLetter string, wordGrid []string) bool {
+func checkFanout(i int, j int, di int, dj int, targetLetter string, wordGrid []string) bool {
 	// Check bounds
 	if i < 0 || i >= len(wordGrid) {
 		return false
@@ -32,7 +32,7 @@ func checkFanout(i int, j int, xTrajectory int, yTrajectory int, targetLetter st
 		return true
 	}
 
-	return checkFanout(i+xTrajectory, j+yTrajectory, xTrajectory, yTrajectory, nextLetter, wordGrid)
+	return checkFanout(i+di, j+dj, di, dj, nextLetter, wordGrid)
 }
 
 func checkChar(i int, j int, targetLetter string, wordGrid []string) bool {
