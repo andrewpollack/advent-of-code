@@ -1,4 +1,4 @@
-package main
+package day04
 
 import (
 	"flag"
@@ -52,8 +52,8 @@ func checkChar(i int, j int, targetLetter string, wordGrid []string) bool {
 	return true
 }
 
-func main() {
-	inputFile := flag.String("inputFile", "data/day04.txt", "File to use as input")
+func Main() {
+	inputFile := flag.String("inputFile4", "data/day04.txt", "File to use as input")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
@@ -89,7 +89,7 @@ func main() {
 			}
 		}
 	}
-	fmt.Printf("Part 1 number of XMAS: %d\n", total)
+	fmt.Printf("Day04 Part 1 number of XMAS: %d\n", total)
 
 	// Going line-by-line, starting with A
 	total = 0
@@ -106,5 +106,5 @@ func main() {
 			}
 		}
 	}
-	fmt.Printf("Part 2 number of X-MAS: %d\n", total)
+	fmt.Printf("Day04 Part 2 number of X-MAS: %d\n\n", total)
 }

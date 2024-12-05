@@ -1,8 +1,9 @@
-package main
+package day01
 
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"sort"
 	"strconv"
@@ -34,8 +35,8 @@ func parseInput(data string) ([]int, []int, error) {
 	return numbersA, numbersB, nil
 }
 
-func main() {
-	inputFile := flag.String("inputFile", "data/day01.txt", "File to use as data input.")
+func Main() {
+	inputFile := flag.String("inputFile1", "data/day01.txt", "File to use as data input.")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
@@ -45,6 +46,9 @@ func main() {
 	}
 
 	numbersA, numbersB, err := parseInput(string(data))
+	if err != nil {
+		log.Fatalf("error: %e", err)
+	}
 	sort.Ints(numbersA)
 	sort.Ints(numbersB)
 
@@ -58,7 +62,7 @@ func main() {
 
 		distance += diff
 	}
-	fmt.Printf("Part 1: Your distance is: %d\n", distance)
+	fmt.Printf("Day01 Part 1: Your distance is: %d\n", distance)
 
 	// Part 2
 	frequencyMap := make(map[int]int)
@@ -73,5 +77,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Part 2: Your similarity score is: %d\n", similarityScore)
+	fmt.Printf("Day01 Part 2: Your similarity score is: %d\n\n", similarityScore)
 }

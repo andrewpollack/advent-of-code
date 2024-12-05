@@ -1,14 +1,13 @@
-package main
+package day02
 
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 	"strings"
 )
-
-const SENTINEL_VAL = -1
 
 func parseInput(data string) ([][]int, error) {
 	var allLists [][]int
@@ -93,14 +92,13 @@ func isListOkayWithDampener(currList []int) bool {
 	return false
 }
 
-func main() {
-	inputFile := flag.String("inputFile", "data/day02.txt", "File to use as data input.")
+func Main() {
+	inputFile := flag.String("inputFile2", "data/day02.txt", "File to use as data input.")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error reading file: %v\n", err)
-		os.Exit(1)
+		log.Fatalf("Error reading file: %v\n", err)
 	}
 
 	allLists, err := parseInput(string(data))
@@ -110,7 +108,7 @@ func main() {
 			safeReports += 1
 		}
 	}
-	fmt.Printf("Part 1: Safe reports count: %d\n", safeReports)
+	fmt.Printf("Day02 Part 1: Safe reports count: %d\n", safeReports)
 
 	safeReports = 0
 	for _, currList := range allLists {
@@ -119,5 +117,5 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Part 2: Safe reports count (with dampener): %d\n", safeReports)
+	fmt.Printf("Day02 Part 2: Safe reports count (with dampener): %d\n\n", safeReports)
 }
