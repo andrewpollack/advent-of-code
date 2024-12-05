@@ -2,7 +2,6 @@ package day03
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"regexp"
@@ -10,12 +9,13 @@ import (
 )
 
 func Main() {
+	logger := log.New(os.Stdout, "Day03: ", 0)
 	inputFile := flag.String("inputFile3", "data/day03.txt", "File to use as data input.")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
 	if err != nil {
-		log.Fatalf("Error reading file: %v\n", err)
+		logger.Fatalf("Error reading file: %v\n", err)
 	}
 
 	// Regex, with two sub groups for numbers.
@@ -28,17 +28,17 @@ func Main() {
 
 		x, err := strconv.Atoi(match[1])
 		if err != nil {
-			log.Fatalf("Something went wrong converting first number value: %v", err)
+			logger.Fatalf("Something went wrong converting first number value: %v", err)
 		}
 		y, err := strconv.Atoi(match[2])
 		if err != nil {
-			log.Fatalf("Something went wrong converting second number value: %v", err)
+			logger.Fatalf("Something went wrong converting second number value: %v", err)
 		}
 
 		total += x * y
 	}
 
-	fmt.Printf("Day03 Part 1 total: %d\n", total)
+	logger.Printf("Part 1 total: %d\n", total)
 
 	part2Regex := `mul\((\d+),(\d+)\)|do\(\)|don't\(\)`
 	re = regexp.MustCompile(part2Regex)
@@ -64,5 +64,5 @@ func Main() {
 		}
 	}
 
-	fmt.Printf("Day03 Part 2 total: %d\n\n", total)
+	logger.Printf("Part 2 total: %d\n\n", total)
 }

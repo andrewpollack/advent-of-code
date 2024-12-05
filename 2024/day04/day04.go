@@ -2,7 +2,6 @@ package day04
 
 import (
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -45,29 +44,24 @@ func checkChar(i int, j int, targetLetter string, wordGrid []string) bool {
 	}
 
 	currChar := string(wordGrid[i][j])
-	if currChar != targetLetter {
-		return false
-	}
-
-	return true
+	return currChar == targetLetter
 }
 
 func Main() {
+	logger := log.New(os.Stdout, "Day04: ", 0)
 	inputFile := flag.String("inputFile4", "data/day04.txt", "File to use as input")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
 	if err != nil {
-		log.Fatalf("error reading file %q: %v", *inputFile, err)
+		logger.Fatalf("error reading file %q: %v", *inputFile, err)
 	}
 
 	stringData := string(data)
 
 	var wordGrid []string
 	lines := strings.Split(strings.TrimSpace(stringData), "\n")
-	for _, line := range lines {
-		wordGrid = append(wordGrid, line)
-	}
+	wordGrid = append(wordGrid, lines...)
 
 	// Going line-by-line, starting with X
 	total := 0
@@ -89,7 +83,7 @@ func Main() {
 			}
 		}
 	}
-	fmt.Printf("Day04 Part 1 number of XMAS: %d\n", total)
+	logger.Printf("Part 1 number of XMAS: %d\n", total)
 
 	// Going line-by-line, starting with A
 	total = 0
@@ -106,5 +100,5 @@ func Main() {
 			}
 		}
 	}
-	fmt.Printf("Day04 Part 2 number of X-MAS: %d\n\n", total)
+	logger.Printf("Part 2 number of X-MAS: %d\n\n", total)
 }

@@ -93,22 +93,26 @@ func isListOkayWithDampener(currList []int) bool {
 }
 
 func Main() {
+	logger := log.New(os.Stdout, "Day02: ", 0)
 	inputFile := flag.String("inputFile2", "data/day02.txt", "File to use as data input.")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
 	if err != nil {
-		log.Fatalf("Error reading file: %v\n", err)
+		logger.Fatalf("Error reading file: %v\n", err)
 	}
 
 	allLists, err := parseInput(string(data))
+	if err != nil {
+		logger.Fatalf("error parsing input: %v", err)
+	}
 	safeReports := 0
 	for _, currList := range allLists {
 		if isListOkay(currList) {
 			safeReports += 1
 		}
 	}
-	fmt.Printf("Day02 Part 1: Safe reports count: %d\n", safeReports)
+	logger.Printf("Part 1: Safe reports count: %d\n", safeReports)
 
 	safeReports = 0
 	for _, currList := range allLists {
@@ -117,5 +121,5 @@ func Main() {
 		}
 	}
 
-	fmt.Printf("Day02 Part 2: Safe reports count (with dampener): %d\n\n", safeReports)
+	logger.Printf("Part 2: Safe reports count (with dampener): %d\n\n", safeReports)
 }

@@ -36,6 +36,7 @@ func parseInput(data string) ([]int, []int, error) {
 }
 
 func Main() {
+	logger := log.New(os.Stdout, "Day01: ", 0)
 	inputFile := flag.String("inputFile1", "data/day01.txt", "File to use as data input.")
 	flag.Parse()
 
@@ -47,7 +48,7 @@ func Main() {
 
 	numbersA, numbersB, err := parseInput(string(data))
 	if err != nil {
-		log.Fatalf("error: %e", err)
+		logger.Fatalf("error: %e", err)
 	}
 	sort.Ints(numbersA)
 	sort.Ints(numbersB)
@@ -62,7 +63,7 @@ func Main() {
 
 		distance += diff
 	}
-	fmt.Printf("Day01 Part 1: Your distance is: %d\n", distance)
+	logger.Printf("Part 1: Your distance is: %d\n", distance)
 
 	// Part 2
 	frequencyMap := make(map[int]int)
@@ -77,5 +78,5 @@ func Main() {
 		}
 	}
 
-	fmt.Printf("Day01 Part 2: Your similarity score is: %d\n\n", similarityScore)
+	logger.Printf("Part 2: Your similarity score is: %d\n\n", similarityScore)
 }
