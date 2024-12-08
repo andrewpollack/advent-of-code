@@ -103,7 +103,7 @@ func Main() {
 		total += page[len(page)/2]
 	}
 
-	logger.Printf("Part 2 total: %d", total)
+	logger.Printf("Part 2 total: %d\n\n", total)
 }
 
 func isPageValidTwo(page []int, cannotBeAfter map[int]map[int]struct{}) (int, int, bool) {
