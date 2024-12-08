@@ -204,7 +204,7 @@ func Main() {
 		guard.TakeNextStep()
 	}
 
-	logger.Printf("Part 1 total: %d\n\n", guard.totalSeen)
+	logger.Printf("Part 1 total: %d\n", guard.totalSeen)
 
 	// Part 2 takes ~12s to run, since it is a brute force check on every possible iteration.
 	if false {
@@ -228,6 +228,8 @@ func Main() {
 				// SleepAndDumpGridState(grid)
 			}
 		}
-		logger.Printf("Total cycles: %d", totalCycles)
+		logger.Printf("Part 2 total cycles: %d", totalCycles)
+	} else {
+		logger.Printf("Part 2 skipped for slowness reasons... comment out above to include\n\n")
 	}
 }
