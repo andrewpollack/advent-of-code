@@ -113,5 +113,5 @@ func Main() {
 			total += target
 		}
 	}
-	logger.Printf("Part 2 total: %d", total)
+	logger.Printf("Part 2 total: %d\n\n", total)
 }
