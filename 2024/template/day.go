@@ -8,7 +8,7 @@ import (
 
 func Main() {
 	logger := log.New(os.Stdout, "dayXX: ", 0)
-	inputFile := flag.String("inputFile5", "data/dayXX.txt", "Input file for day")
+	inputFile := flag.String("dayXXInputFile", "data/dayXX.txt", "Input file for day")
 	flag.Parse()
 
 	data, err := os.ReadFile(*inputFile)
