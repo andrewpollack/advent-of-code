@@ -48,21 +48,23 @@ func Main() {
 
 	left, right := 0, len(idSlice)-1
 	for left < right {
-		for idSlice[left].id != FREE_SPACE_ID {
-			left += 1
-			continue
-		}
-		for idSlice[right].id == FREE_SPACE_ID {
-			right -= 1
-			continue
+		// Move left pointer to the first FREE_SPACE_ID
+		for left < right && idSlice[left].id != FREE_SPACE_ID {
+			left++
 		}
 
-		idSlice[left].id = idSlice[right].id
-		idSlice[right].id = FREE_SPACE_ID
+		// Move right pointer to the first non-FREE_SPACE_ID
+		for left < right && idSlice[right].id == FREE_SPACE_ID {
+			right--
+
+		// Swap the elements if valid positions are found
+		if left < right {
+			idSlice[left].id = idSlice[right].id
+			idSlice[right].id = FREE_SPACE_ID
+			left++
+			right--
+		}
 	}
-
-	idSlice[right].id = idSlice[left].id
-	idSlice[left].id = FREE_SPACE_ID
 
 	total := 0
 	for i, val := range idSlice {
