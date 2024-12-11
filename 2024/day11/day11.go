@@ -134,7 +134,7 @@ func Main() {
 		stones = append(stones, NewStone(intVal))
 	}
 
-	// For Part 2, some form of dynamic programming was needed to reduce on duplicate calculations...
+	// For Part 2, some form of caching was needed to reduce on duplicate calculations...
 	stoneMap := make(map[string]int)
 	total := 0
 	for _, currStone := range stones {
