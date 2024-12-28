@@ -141,5 +141,5 @@ func Main() {
 		total += getTotal(NewStoneState(currStone.val, PART_2_NUM_BLINKS), stoneMap)
 	}
 
-	logger.Printf("Part 2 total after %d blinks: %d", PART_2_NUM_BLINKS, total)
+	logger.Printf("Part 2 total after %d blinks: %d\n\n", PART_2_NUM_BLINKS, total)
 }
