@@ -15,5 +15,5 @@ day:
 		mkdir -p day$${daynumber}; \
 		cp template/day.go day$${daynumber}/day$${daynumber}.go; \
 		sed -i "s/dayXX/day$${daynumber}/g" day$${daynumber}/day$${daynumber}.go; \
-		touch data/day$${daynumber}; \
+		touch data/day$${daynumber}.txt; \
 	fi

@@ -67,39 +67,39 @@ func (r Region) GetPerimeter() int {
 	return perimeter
 }
 
-func (r Region) GetSides() int {
+// func (r Region) GetSides() int {
 
-	// Make set of items
-	coordinateSet := make(map[Coordinate]bool)
+// 	// Make set of items
+// 	coordinateSet := make(map[Coordinate]bool)
 
-	for _, val := range r.items {
-		coordinateSet[val] = true
-	}
+// 	for _, val := range r.items {
+// 		coordinateSet[val] = true
+// 	}
 
-	perimeter := 0
-	for _, val := range r.items {
-		directions := []struct {
-			dx, dy int
-		}{
-			{0, 1},  // Down
-			{0, -1}, // Up
-			{1, 0},  // Right
-			{-1, 0}, // Left
-		}
+// 	perimeter := 0
+// 	for _, val := range r.items {
+// 		directions := []struct {
+// 			dx, dy int
+// 		}{
+// 			{0, 1},  // Down
+// 			{0, -1}, // Up
+// 			{1, 0},  // Right
+// 			{-1, 0}, // Left
+// 		}
 
-		numNeighbors := 0
-		for _, d := range directions {
-			newX, newY := val.x+d.dx, val.y+d.dy
-			if _, ok := coordinateSet[Coordinate{newX, newY}]; ok {
-				numNeighbors += 1
-			}
-		}
+// 		numNeighbors := 0
+// 		for _, d := range directions {
+// 			newX, newY := val.x+d.dx, val.y+d.dy
+// 			if _, ok := coordinateSet[Coordinate{newX, newY}]; ok {
+// 				numNeighbors += 1
+// 			}
+// 		}
 
-		perimeter += currPerimeter
-	}
+// 		perimeter += currPerimeter
+// 	}
 
-	return perimeter
-}
+// 	return perimeter
+// }
 
 func (g *Garden) GetRegions() []Region {
 	var regions []Region
@@ -197,5 +197,5 @@ func Main() {
 		price += val.GetPerimeter() * val.GetArea()
 	}
 
-	logger.Printf("Part 1 price: %d", price)
+	logger.Printf("Part 1 price: %d\n\n", price)
 }
